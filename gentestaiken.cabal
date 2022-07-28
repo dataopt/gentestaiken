@@ -1,0 +1,61 @@
+cabal-version:      2.4
+name:               gentestaiken
+version:            0.1.0.0
+
+-- A short (one-line) description of the package.
+synopsis: Takes a question bank in Aiken format and produces a test.
+
+-- A longer description of the package.
+-- description:
+
+-- A URL where users can report bugs.
+-- bug-reports:
+
+-- The license under which the package is released.
+license: BSD-3-Clause
+
+-- The package author(s).
+-- author:
+maintainer:         mathappticain@gmail.com
+
+-- A copyright notice.
+-- copyright:
+-- category:
+extra-source-files: CHANGELOG.md
+
+library question
+    exposed-modules:  Question
+    hs-source-dirs:   lib
+    build-depends:    base ^>=4.14.3.0
+                    , text
+                    , attoparsec
+    ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
+    default-language: Haskell2010
+
+executable gentestaiken
+    main-is:          Main.hs
+
+  -- Modules included in this executable, other than Main.
+    other-modules:    Params
+
+  -- LANGUAGE extensions used by modules in this package.
+  -- other-extensions:
+    build-depends:    base ^>=4.14.3.0
+                    , random
+                    , text
+                    , combinat
+                    , question
+                    , optparse-applicative
+    hs-source-dirs:   app
+    default-language: Haskell2010
+
+--test-suite aiken-test
+--  type: exitcode-stdio-1.0
+--  main-is: tests/AikenTest.hs
+--  ghc-options: -Wall -Werror -Wcompat -Widentities -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-unused-top-binds -Wno-orphans
+--  build-depends:
+--      base >=4.12 && <4.15
+--    , doctest >=0.12 && <0.19
+--    , split >=0.2 && <0.3
+--    , aiken
+--  default-language: Haskell2010
